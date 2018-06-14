@@ -1,8 +1,8 @@
 import sinon from 'sinon';
-import {Api, filterByTypeAndSubject} from '../dataFilter';
-import {filterByType} from "../dataFilter";
-import {filterBySubject} from "../dataFilter";
-import {getAPI} from "../dataFilter";
+import {Api, filterByTypeAndSubject} from './dataFilter';
+import {filterByType} from "./dataFilter";
+import {filterBySubject} from "./dataFilter";
+import {getAPI} from "./dataFilter";
 
 let chai = require('chai');
 let expect = chai.expect;
