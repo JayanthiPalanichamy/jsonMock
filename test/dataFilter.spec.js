@@ -2,6 +2,7 @@ import sinon from 'sinon';
 import {Api, filterByTypeAndSubject} from '../dataFilter';
 import {filterByType} from "../dataFilter";
 import {filterBySubject} from "../dataFilter";
+import {getCountOfUniqueTypes} from "../dataFilter";
 import {getAPI} from "../dataFilter";
 
 let chai = require('chai');
@@ -54,6 +55,17 @@ describe('Filtering data from json', () => {
             {name: 'Masses & Springs', type: 'apps', subject: 'physics'}];
 
         expect(filterByTypeAndSubject('apps', 'physics')).to.eventually.deep.equal(dataWithSubject);
+
+        apiMock.restore();
+        apiMock.verify();
+    });
+
+    it('should return count of unique types in the data', () => {
+        let apiMock = sinon.mock(Api);
+        apiMock.expects('getAPI').withArgs('https://raw.githubusercontent.com/balaswecha/pencilbox-2/master/app/json/all.json').returns(Promise.resolve(data));
+
+
+        expect(getCountOfUniqueTypes()).to.eventually.equal(1);
 
         apiMock.restore();
         apiMock.verify();
